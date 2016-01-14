@@ -1,52 +1,37 @@
-module.exports = function (grunt) {
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        bowercopy: {
-            options: {
-                srcPrefix: 'bower_components',
-                destPrefix: 'web/assets'
-            },
-            scripts: {
-                files: {
-                    'js/jquery.js': 'jquery/dist/jquery.js',
-                    'js/bootstrap.js': 'bootstrap/dist/js/bootstrap.js'
-                }
-            },
-            stylesheets: {
-                files: {
-                    'css/bootstrap.css': 'bootstrap/dist/css/bootstrap.css',
-                    'css/font-awesome.css': 'font-awesome/css/font-awesome.css'
-                }
-            },
-            fonts: {
-                files: {
-                    'fonts': 'font-awesome/fonts'
-                }
-            }
-        },
-        cssmin : {
-            bootstrap:{
-                src: 'web/assets/css/bootstrap.css',
-                dest: 'web/assets/css/bootstrap.min.css'
-            },
-            "font-awesome":{
-                src: 'web/assets/css/font-awesome.css',
-                dest: 'web/assets/css/font-awesome.min.css'
-            }
-        },
-        uglify : {
-            js: {
-                files: {
-                    'web/assets/js/jquery.min.js': ['web/assets/js/jquery.js'],
-                    'web/assets/js/bootstrap.min.js': ['web/assets/js/bootstrap.js']
-                }
-            }
-        }
+// Generated on 2016-01-14 using
+// generator-grunt-symfony 0.9.1
+module.exports = function(grunt) {
+    var _ = require('lodash');
+    var fs = require('fs');
+    var path = require('path');
+    
+    var env = _.defaults(fs.existsSync('.envrc') && grunt.file.readJSON('.envrc') || {}, {
+        port: parseInt(grunt.option('port'), 10) || 8000
     });
 
-    grunt.loadNpmTasks('grunt-bowercopy');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    var paths = {
+        app: 'app/Resources/public',
+        dist: 'web'
+    };
 
-    grunt.registerTask('default', ['bowercopy', 'cssmin', 'uglify']);
+    require('jit-grunt')(grunt,{
+        availabletasks: 'grunt-available-tasks'
+    });
+
+    // load grunt config
+    require('load-grunt-config')(grunt, {
+        // path to task.js files, defaults to grunt dir
+        configPath: path.join(process.cwd(), 'grunt'),
+
+        // auto grunt.initConfig
+        init: true,
+
+        // data passed into config.
+        data: {
+            paths: paths,
+            env: env
+        },
+
+        jitGrunt: true
+    });
 };

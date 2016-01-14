@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% block stylesheets %}
+                {% if app.environment == 'node' %}
+                    <link rel="stylesheet" href="{{ asset('styles/main.css') }}"/>
+                {% else %}
+                    {% block stylesheetsDist %}
+                    <link rel="stylesheet" href="{{ asset('styles/main.css') }}"/>
+                    {% endblock stylesheetsDist %}
+                {% endif %}
+            {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %} 
+            <script type="text/javascript" src="{{ asset('scripts/main.js') }}"></script>            
+        {% endblock %}
     </body>
 </html>
