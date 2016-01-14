@@ -28,4 +28,16 @@ Temporary Items
 npm-debug.log
 /bower_components
 /node_modules
+web/assets/vendor/
+test/
+test/
 /vendor
+/app/config/parameters.yml
+/app/bootstrap.php.cache
+/app/cache/*
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+/build/
+/bin/
+/composer.phar

@@ -1,0 +1,24 @@
+{
+  "name": "comp3013",
+  "homepage": "https://github.com/oasisweng/comp3013",
+  "authors": [
+    "oasisweng <oasisweng@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "web/assets/vendor/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+        "jquery": "1.*",
+        "bootstrap": "3.3.*",
+        "font-awesome": "4.5.*"
+    }
+}
