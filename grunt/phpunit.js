@@ -3,7 +3,7 @@ module.exports = {
     app: {
         options: {
             configuration: 'app/phpunit.xml.dist',
-            bin: 'bin/phpunit',
+            bin: 'phpunit',
             followOutput: true,
             color: true
         }
